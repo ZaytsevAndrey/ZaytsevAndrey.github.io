@@ -1,1 +1,32 @@
-Hello World
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+
+
+  <link href="style.css" rel="stylesheet" />
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+
+  <body ng-app="app">
+    <div class="wrapper">
+      <div class="menu" ng-controller="menuController">
+        <div class="menu-title">
+          Main
+        </div>
+        <div class="menu-item" ng-click="go('/overview')">
+          Ovewrview
+        </div>
+      </div>
+
+      <ng-view></ng-view>
+    </div>
+
+
+
+    <script src="core.module.js"></script>
+    <script src="main.controller.js"></script>
+    <script src="menu.controller.js"></script>
+
+  </body>
+
+</html>

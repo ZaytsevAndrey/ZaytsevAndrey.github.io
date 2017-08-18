@@ -1,0 +1,48 @@
+<div class="overview">
+  <div class="items-list">
+    <div class="items-title">
+      Items
+    </div>
+
+    <div class="add-item">
+      <input ng-model="newItem.name" placeholder="Type name here..." type="text">
+      <button ng-click="addItem()" type="button">Add item</button>
+    </div>
+
+    <div class="items">
+      <div class="item" ng-click="selectItem(item)" ng-repeat="item in items track by $index" ng-class="(selectedItemId === items.indexOf(item)) ? 'active' : ''">
+        <div class="item-name">
+          {{ item.name }}
+        </div>
+        <div ng-class="(item.comments.length > 0) ? '' : 'hide'" class="comments-length">
+          {{ item.comments.length }}
+        </div>
+        <button ng-click="deleteItem(item)" type="button" name="delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="comments-list">
+    <div class="comments-title">
+      Comments #{{selectedItemId + 1}}
+    </div>
+
+    <div class="comments">
+
+      <div ng-if="(items[selectedItemId].comments.length == 0)" class="no-comments">
+        Have no comments yet
+      </div>
+
+      <div class="comment" ng-repeat="comment in items[selectedItemId].comments track by $index">
+        <div class="comment-avatar"></div>
+        <div class="comment-content">{{ comment }}</div>
+      </div>
+
+      <div class="add-comment">
+        <div class="avatar"></div>
+        <textarea ng-model="newComment" submit-on-enter="doSomething()" ng-keyup="addComment($event)" type="text"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
